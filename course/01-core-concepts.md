@@ -118,28 +118,42 @@ flowchart TB
 
 Modules 2–3 expand this with tooling.
 
+The three cases are **stacked below** (each diagram is its own figure) so they read top-to-bottom instead of side-by-side: **Windows**, then **macOS**, then **Linux**.
+
+**Windows host**
+
 ```mermaid
 flowchart TB
-  subgraph linux["Linux host"]
-    LK["Linux kernel"]
-    LC["Linux containers"]
-    LK --- LC
-  end
-
-  subgraph mac["macOS host"]
-    MK["Darwin kernel"]
-    MV["Linux VM Colima /\nDocker Desktop /\nPodman Machine"]
-    ML["Linux containers"]
-    MK -.->|"does not run\nLinux containers natively"| MV
-    MV --> ML
-  end
-
   subgraph win["Windows host"]
     WK["Windows kernel"]
     WSL["WSL2 Linux VM"]
     WL["Linux containers"]
     WK -.->|"workloads run in\nLinux environment"| WSL
     WSL --> WL
+  end
+```
+
+**macOS host**
+
+```mermaid
+flowchart TB
+  subgraph mac["macOS host"]
+    MK["Darwin kernel"]
+    MV["Linux VM\nColima / Docker Desktop /\nPodman Machine"]
+    ML["Linux containers"]
+    MK -.->|"does not run Linux\ncontainers natively"| MV
+    MV --> ML
+  end
+```
+
+**Linux host**
+
+```mermaid
+flowchart TB
+  subgraph linux["Linux host"]
+    LK["Linux kernel"]
+    LC["Linux containers"]
+    LK --> LC
   end
 ```
 

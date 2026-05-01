@@ -2,28 +2,6 @@
 
 This repository contains **course modules** and **hands-on labs** that explain how containers work on **Linux**, **macOS**, and **Windows**, and how common tools map to those platforms.
 
-```mermaid
-flowchart TB
-  subgraph course["What you learn"]
-    OCI["OCI images + Compose spec\nportable across engines"]
-  end
-
-  subgraph linux["Linux"]
-    L["Kernel: namespaces + cgroups"]
-    E1["Docker Engine / Podman"]
-    E1 --> L
-  end
-
-  subgraph other["macOS / Windows"]
-    V["Linux VM or WSL2"]
-    E2["Engine inside Linux"]
-    V --> E2
-  end
-
-  OCI --> E1
-  OCI --> E2
-```
-
 ## Who this is for
 
 - Engineers who need a clear mental model of **where** containers run on each OS.

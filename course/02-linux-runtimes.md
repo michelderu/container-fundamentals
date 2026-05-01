@@ -16,6 +16,8 @@ Typical properties:
 - **Rootful by default on many installs:** the daemon runs as root; users in the `docker` group can talk to the socket (effectively **root-equivalent** on the host — treat membership as highly sensitive).
 - **Ubiquitous docs and CI examples** use `docker` commands.
 
+**Licensing (short version):** **Docker Engine** on Linux — the open-source **Moby** / **Docker CE** (`docker-ce`) stack with `dockerd` — is **free to use** under the applicable open-source licenses. You do **not** pay Docker Inc. a separate “Engine license” in the same way many organizations must for **Docker Desktop** above certain commercial-use thresholds. Docker may still offer **paid support** or other products; **always** confirm current terms with your legal/procurement team.
+
 ```mermaid
 flowchart LR
   subgraph client["Same machine"]
@@ -90,8 +92,8 @@ flowchart TB
 
 ## 5. When enterprises pick Engine vs Podman on Linux
 
-- **Docker Engine** (CE packages or vendor builds) when teams want **maximum tutorial parity** and existing automation targets the Docker API.
-- **Podman** when policy prefers **daemonless**, **rootless**, or **avoiding Docker’s subscription/licensing** footprint on servers (evaluation is organizational).
+- **Docker Engine** (CE packages or vendor builds) when teams want **maximum tutorial parity** and existing automation targets the Docker API — **Engine itself is not a paid product** in the Desktop sense; cost is operational (support, patching, hardening), not a Docker Inc. Engine seat fee for typical Linux installs.
+- **Podman** when policy prefers **daemonless**, **rootless**, **vendor or distro alignment** (e.g. RHEL/Fedora defaults), or **avoiding Docker Inc. tooling** altogether — not because Engine CE is “not free.”
 - **Both** may coexist **if** governance allows — but standardize image build and Compose to reduce drift.
 
 ---
