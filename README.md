@@ -10,7 +10,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 
 ## How to use this material
 
-1. Read the course modules in order (`course/01` → `06`).
+1. Read the course modules in order (`course/01` → `07`); use [course/07-setup-linux-macos-windows.md](course/07-setup-linux-macos-windows.md) when you are ready to install tools.
 2. Complete labs on a machine that matches the lab’s platform notes (Linux labs on Linux, and so on).
 3. Adapt commands to your organization’s approved tooling; the enterprise module lists common patterns.
 
@@ -24,6 +24,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [course/04-compose.md](course/04-compose.md) | `docker compose`, `docker-compose`, Podman Compose |
 | [course/05-desktop-products.md](course/05-desktop-products.md) | Docker Desktop vs Podman Desktop vs Colima (roles, not slogans) |
 | [course/06-enterprise-constraints.md](course/06-enterprise-constraints.md) | Licensing, policy, air-gapped, practical stack choices |
+| [course/07-setup-linux-macos-windows.md](course/07-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows |
 | [labs/](labs/) | Step-by-step exercises |
 
 ## Lab index
