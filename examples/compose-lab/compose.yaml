@@ -1,0 +1,11 @@
+# Used by labs/lab-04-compose.md — two independent services, two host ports
+services:
+  web:
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+
+  api:
+    image: traefik/whoami:latest
+    ports:
+      - "8081:80"
