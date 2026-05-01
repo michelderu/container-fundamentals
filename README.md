@@ -10,7 +10,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 
 ## How to use this material
 
-1. Read the course modules in order (`course/01` → `07`); use [course/07-setup-linux-macos-windows.md](course/07-setup-linux-macos-windows.md) when you are ready to install tools.
+1. Read the course modules in order (`course/01` → `08`); use [course/07-kubernetes-kind.md](course/07-kubernetes-kind.md) for kind concepts and [course/08-setup-linux-macos-windows.md](course/08-setup-linux-macos-windows.md) for concrete installs.
 2. Complete labs on a machine that matches the lab’s platform notes (Linux labs on Linux, and so on).
 3. Adapt commands to your organization’s approved tooling; the enterprise module lists common patterns.
 
@@ -24,7 +24,8 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [course/04-compose.md](course/04-compose.md) | `docker compose`, `docker-compose`, Podman Compose |
 | [course/05-desktop-products.md](course/05-desktop-products.md) | Docker Desktop vs Podman Desktop vs Colima (roles, not slogans) |
 | [course/06-enterprise-constraints.md](course/06-enterprise-constraints.md) | Licensing, policy, air-gapped, practical stack choices |
-| [course/07-setup-linux-macos-windows.md](course/07-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows |
+| [course/07-kubernetes-kind.md](course/07-kubernetes-kind.md) | Kubernetes with **kind**: providers, paths, usage, Desktop comparison |
+| [course/08-setup-linux-macos-windows.md](course/08-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows (includes kind install) |
 
 ## Lab index
 
@@ -36,6 +37,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [labs/lab-04-compose.md](labs/lab-04-compose.md) | Same Compose file with Docker and Podman ([example YAML](examples/compose-lab/compose.yaml)) |
 | [labs/lab-05-mac-colima.md](labs/lab-05-mac-colima.md) | Colima as a Desktop-free path on macOS |
 | [labs/lab-06-windows-wsl-podman.md](labs/lab-06-windows-wsl-podman.md) | WSL2 + Podman or Engine patterns on Windows |
+| [labs/lab-07-kubernetes-kind.md](labs/lab-07-kubernetes-kind.md) | kind cluster, kubectl, port-forward ([optional NodePort YAML](examples/kind/nginx-nodeport-demo.yaml)) |
 
 ## Conventions
 

@@ -1,4 +1,4 @@
-# Module 7 — Concrete setup: Linux, macOS, and Windows
+# Module 8 — Concrete setup: Linux, macOS, and Windows
 
 ## Learning outcomes
 
@@ -236,10 +236,150 @@ flowchart TB
 | Compose | [lab-04-compose.md](../labs/lab-04-compose.md) |
 | macOS Colima | [lab-05-mac-colima.md](../labs/lab-05-mac-colima.md) |
 | Windows WSL | [lab-06-windows-wsl-podman.md](../labs/lab-06-windows-wsl-podman.md) |
+| Local Kubernetes (**kind**) | Course [module 07](07-kubernetes-kind.md); lab [lab-07-kubernetes-kind.md](../labs/lab-07-kubernetes-kind.md) |
 
 ---
 
-## 6. Check your understanding
+## 6. Kubernetes with kind setup (after your engine works)
+
+**kind** needs a functioning **Docker** or **Podman** stack first; it spins up Kubernetes **nodes** as normal containers on that engine.
+
+### 6a. Install `kubectl` (all OS)
+
+Use your org mirror if required. Official docs:
+
+- Kubernetes docs: [Install kubectl](https://kubernetes.io/docs/tasks/tools/)
+- Version skew policy: [kubectl version skew](https://kubernetes.io/releases/version-skew-policy/)
+
+- **Linux:** distro package (`dnf install kubectl`, `apt` repo flow, etc.) per your approved baseline.
+- **macOS:** `brew install kubectl`
+- **Windows:** inside **WSL2** preferred; host-side `winget`/Chocolatey is possible if your kubeconfig strategy is clear.
+
+```bash
+kubectl version --client
+```
+
+### 6b. Install `kind` on Linux
+
+Preferred in enterprise: internal package or pinned upstream release binary.
+Official docs:
+
+- kind quick-start: [kind.sigs.k8s.io/docs/user/quick-start](https://kind.sigs.k8s.io/docs/user/quick-start/)
+- kind releases: [github.com/kubernetes-sigs/kind/releases](https://github.com/kubernetes-sigs/kind/releases)
+- known issues: [kind.sigs.k8s.io/docs/user/known-issues](https://kind.sigs.k8s.io/docs/user/known-issues/)
+
+```bash
+KIND_VERSION=v0.31.0   # set explicitly to your approved pinned version
+
+case "$(uname -m)" in
+  x86_64) KIND_ARCH=amd64 ;;
+  aarch64 | arm64) KIND_ARCH=arm64 ;;
+  *) echo >&2 'Unsupported CPU for this snippet'; exit 1 ;;
+esac
+
+curl -Lo ./kind "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-${KIND_ARCH}"
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+rm -f ./kind
+kind version
+```
+
+If your distro provides `kind` via package manager, remember those packages are community-managed (as quick-start notes), so verify provenance against your internal policy.
+
+### 6c. Install `kind` on macOS
+
+Official docs:
+
+- kind quick-start: [kind.sigs.k8s.io/docs/user/quick-start](https://kind.sigs.k8s.io/docs/user/quick-start/)
+- Colima docs: [github.com/abiosoft/colima](https://github.com/abiosoft/colima)
+
+```bash
+KIND_VERSION=v0.31.0   # set explicitly to your approved pinned version
+
+# Option 1 (quick-start package manager path)
+brew install kind
+
+# Option 2 (quick-start release binary path)
+case "$(uname -m)" in
+  x86_64) KIND_ARCH=amd64 ;;
+  arm64) KIND_ARCH=arm64 ;;
+  *) echo >&2 'Unsupported CPU for this snippet'; exit 1 ;;
+esac
+curl -Lo ./kind "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-darwin-${KIND_ARCH}"
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind   # or another writable dir in your PATH
+
+# kubectl (official docs in 6a)
+brew install kubectl
+
+docker context ls
+# If using Colima:
+colima start
+docker context use colima
+kind version
+```
+
+### 6d. Install `kind` on Windows
+
+- **Path A (Windows host tools + Docker Desktop backend):**
+  1. Install/enable WSL2 (official): [Install WSL](https://learn.microsoft.com/windows/wsl/install)
+  2. Install Docker Desktop and enable WSL2 backend: [Docker Desktop for Windows install](https://docs.docker.com/desktop/setup/install/windows-install/)
+  3. Install `kind` on Windows host using one quick-start path:
+
+```powershell
+# Option 1 (quick-start release binary)
+$KIND_VERSION = "v0.31.0"   # set explicitly to your approved pinned version
+curl.exe -Lo kind-windows-amd64.exe "https://kind.sigs.k8s.io/dl/$KIND_VERSION/kind-windows-amd64"
+Move-Item .\kind-windows-amd64.exe c:\some-dir-in-your-PATH\kind.exe
+
+# Option 2 (quick-start package manager examples)
+winget install Kubernetes.kind
+# or: choco install kind
+# or: scoop install kind
+```
+
+  4. Install `kubectl` (official docs in 6a), e.g.:
+
+```powershell
+winget install -e --id Kubernetes.kubectl
+# or: choco install kubernetes-cli
+
+docker version
+kubectl version --client
+kind version
+```
+
+  If your enterprise blocks public package managers, use internal package/mirror sources with the same pinned version.
+
+- **Path B (recommended for consistency): all tooling inside WSL2 Linux distro**
+  1. Install WSL2 + distro: [Install WSL](https://learn.microsoft.com/windows/wsl/install)
+  2. Install Docker Engine or Podman inside WSL distro (see sections `3b` / `3c` above).
+  3. Install `kubectl` via Kubernetes docs and `kind` via Linux method from `6b`.
+  4. Run `kind`, `kubectl`, and engine commands from the same WSL shell.
+
+```bash
+# inside WSL path
+kind version
+kubectl version --client
+docker version   # or podman version
+```
+
+**Windows tip:** avoid mixing `kubectl.exe` on Windows with `kind` created only in WSL until you intentionally share kubeconfig paths.
+
+### 6e. First kind smoke test
+
+```bash
+kind create cluster --name cf-smoke
+kubectl cluster-info --context kind-cf-smoke
+kubectl get nodes
+kind delete cluster --name cf-smoke
+```
+
+For concepts (providers, where nodes actually run, Desktop comparison), see **[module 07 — Kubernetes locally with kind](07-kubernetes-kind.md)**.
+
+---
+
+## 7. Check your understanding
 
 1. On macOS, why is `brew install docker` **not** enough without **Colima**, **Docker Desktop**, or another Linux backend?
 2. Why is WSL **version 2** preferred over WSL1 for running Podman or Docker Engine?
