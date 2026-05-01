@@ -25,7 +25,6 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [course/05-desktop-products.md](course/05-desktop-products.md) | Docker Desktop vs Podman Desktop vs Colima (roles, not slogans) |
 | [course/06-enterprise-constraints.md](course/06-enterprise-constraints.md) | Licensing, policy, air-gapped, practical stack choices |
 | [course/07-setup-linux-macos-windows.md](course/07-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows |
-| [labs/](labs/) | Step-by-step exercises |
 
 ## Lab index
 
@@ -40,7 +39,6 @@ This repository contains **course modules** and **hands-on labs** that explain h
 
 ## Conventions
 
-- **Diagrams** use [Mermaid](https://mermaid.js.org/) (renders on GitHub and in many Markdown preview tools).
 - **Copy-paste blocks** are shell commands unless marked otherwise.
 - **“Linux container”** means a workload using the **Linux kernel** userland ABI; macOS and Windows hosts run those workloads **inside** a Linux environment (VM, WSL2, etc.), not on the native host kernel.
 
