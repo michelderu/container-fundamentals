@@ -118,22 +118,18 @@ flowchart TB
 
 Modules 2–3 expand this with tooling.
 
-The three cases are **stacked below** (each diagram is its own figure) so they read top-to-bottom instead of side-by-side: **Windows**, then **macOS**, then **Linux**.
-
-**Windows host**
+### Linux host
 
 ```mermaid
 flowchart TB
-  subgraph win["Windows host"]
-    WK["Windows kernel"]
-    WSL["WSL2 Linux VM"]
-    WL["Linux containers"]
-    WK -.->|"workloads run in\nLinux environment"| WSL
-    WSL --> WL
+  subgraph linux["Linux host"]
+    LK["Linux kernel"]
+    LC["Linux containers"]
+    LK --> LC
   end
 ```
 
-**macOS host**
+### macOS host
 
 ```mermaid
 flowchart TB
@@ -146,14 +142,16 @@ flowchart TB
   end
 ```
 
-**Linux host**
+### Windows host
 
 ```mermaid
 flowchart TB
-  subgraph linux["Linux host"]
-    LK["Linux kernel"]
-    LC["Linux containers"]
-    LK --> LC
+  subgraph win["Windows host"]
+    WK["Windows kernel"]
+    WSL["WSL2 Linux VM"]
+    WL["Linux containers"]
+    WK -.->|"workloads run in\nLinux environment"| WSL
+    WSL --> WL
   end
 ```
 
