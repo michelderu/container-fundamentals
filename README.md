@@ -10,7 +10,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 
 ## How to use this material
 
-1. Read the course modules in order (`course/01` → `08`); use [course/07-kubernetes-kind.md](course/07-kubernetes-kind.md) for kind concepts and [course/08-setup-linux-macos-windows.md](course/08-setup-linux-macos-windows.md) for concrete installs.
+1. Read the course modules in order (`course/01` → `09`); use [course/07-kubernetes-kind.md](course/07-kubernetes-kind.md) for kind concepts, [course/08-helm-basics.md](course/08-helm-basics.md) for Helm workflow, and [course/09-setup-linux-macos-windows.md](course/09-setup-linux-macos-windows.md) for concrete installs.
 2. Complete labs on a machine that matches the lab’s platform notes (Linux labs on Linux, and so on).
 3. Adapt commands to your organization’s approved tooling; the enterprise module lists common patterns.
 
@@ -25,7 +25,8 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [course/05-desktop-products.md](course/05-desktop-products.md) | Docker Desktop vs Podman Desktop vs Colima (roles, not slogans) |
 | [course/06-enterprise-constraints.md](course/06-enterprise-constraints.md) | Licensing, policy, air-gapped, practical stack choices |
 | [course/07-kubernetes-kind.md](course/07-kubernetes-kind.md) | Kubernetes with **kind**: providers, paths, usage, Desktop comparison |
-| [course/08-setup-linux-macos-windows.md](course/08-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows (includes kind install) |
+| [course/08-helm-basics.md](course/08-helm-basics.md) | Helm concepts and release workflow on local Kubernetes |
+| [course/09-setup-linux-macos-windows.md](course/09-setup-linux-macos-windows.md) | Concrete install/setup for Linux, macOS, and Windows (includes kind + helm install) |
 
 ## Lab index
 
@@ -38,6 +39,7 @@ This repository contains **course modules** and **hands-on labs** that explain h
 | [labs/lab-05-mac-colima.md](labs/lab-05-mac-colima.md) | Colima as a Desktop-free path on macOS |
 | [labs/lab-06-windows-wsl-podman.md](labs/lab-06-windows-wsl-podman.md) | WSL2 + Podman or Engine patterns on Windows |
 | [labs/lab-07-kubernetes-kind.md](labs/lab-07-kubernetes-kind.md) | kind cluster, kubectl, port-forward ([optional NodePort YAML](examples/kind/nginx-nodeport-demo.yaml)) |
+| [labs/lab-08-helm-on-kind.md](labs/lab-08-helm-on-kind.md) | Helm repo/add/install/upgrade/uninstall flow on a kind cluster |
 
 ## Conventions
 

@@ -1,4 +1,4 @@
-# Module 8 — Concrete setup: Linux, macOS, and Windows
+# Module 9 — Concrete setup: Linux, macOS, and Windows
 
 ## Learning outcomes
 
@@ -237,6 +237,7 @@ flowchart TB
 | macOS Colima | [lab-05-mac-colima.md](../labs/lab-05-mac-colima.md) |
 | Windows WSL | [lab-06-windows-wsl-podman.md](../labs/lab-06-windows-wsl-podman.md) |
 | Local Kubernetes (**kind**) | Course [module 07](07-kubernetes-kind.md); lab [lab-07-kubernetes-kind.md](../labs/lab-07-kubernetes-kind.md) |
+| Helm on local Kubernetes | Course [module 08](08-helm-basics.md); lab [lab-08-helm-on-kind.md](../labs/lab-08-helm-on-kind.md) |
 
 ---
 
@@ -377,9 +378,35 @@ kind delete cluster --name cf-smoke
 
 For concepts (providers, where nodes actually run, Desktop comparison), see **[module 07 — Kubernetes locally with kind](07-kubernetes-kind.md)**.
 
+## 7. Helm setup (after kind)
+
+`helm` is the standard package manager for Kubernetes charts and is commonly used right after `kubectl` + `kind` are working.
+
+### 7a. Install `helm` on Linux, macOS, and Windows
+
+Official docs:
+
+- Helm install docs: [helm.sh/docs/intro/install](https://helm.sh/docs/intro/install/)
+- Helm releases: [github.com/helm/helm/releases](https://github.com/helm/helm/releases)
+
+```bash
+# Linux (script path from Helm docs; prefer internal mirror/package if required)
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+# macOS
+brew install helm
+
+# Windows (host-side)
+winget install Helm.Helm
+# or: choco install kubernetes-helm
+# or inside WSL2 distro: follow Linux method above
+
+helm version
+```
+
 ---
 
-## 7. Check your understanding
+## 8. Check your understanding
 
 1. On macOS, why is `brew install docker` **not** enough without **Colima**, **Docker Desktop**, or another Linux backend?
 2. Why is WSL **version 2** preferred over WSL1 for running Podman or Docker Engine?

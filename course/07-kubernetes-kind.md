@@ -60,7 +60,7 @@ See upstream docs for current Podman provider details: [kind Podman guide](https
 - `kubectl` and `kind` installed.
 - Enough free resources (single-node labs usually need ~2 GiB+ free RAM).
 
-> Installation instructions in **[module 8 setup](08-setup-linux-macos-windows.md#6-kubernetes-with-kind-setup-after-your-engine-works)**.
+> Installation instructions in **[module 9 setup](09-setup-linux-macos-windows.md#6-kubernetes-with-kind-setup-after-your-engine-works)**.
 
 ---
 
@@ -103,6 +103,7 @@ For multi-node configs and pinned node images, see [kind quick-start](https://ki
 ## 8. Related lab
 
 - [lab-07-kubernetes-kind.md](../labs/lab-07-kubernetes-kind.md)
+- Next step: [module 08 - Helm basics](08-helm-basics.md)
 
 ---
 

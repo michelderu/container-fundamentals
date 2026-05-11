@@ -6,7 +6,7 @@ Provision a **one-node kind cluster**, run a trivial workload with **kubectl**, 
 
 ## Prerequisites
 
-- **Docker** or **Podman** working on **Linux**, **macOS** (often **Docker + Colima** with `docker context use colima`), or **WSL2** with the engine installed **inside** the distro ([module 08 setup](../course/08-setup-linux-macos-windows.md)).
+- **Docker** or **Podman** working on **Linux**, **macOS** (often **Docker + Colima** with `docker context use colima`), or **WSL2** with the engine installed **inside** the distro ([module 09 setup](../course/09-setup-linux-macos-windows.md)).
 - **kind** and **kubectl** installed ([module 07 kind concepts](../course/07-kubernetes-kind.md)).
 
 ## Prerequisites check
